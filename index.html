@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayan - Graphic Design & Web Development Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #f72585;
+            --dark: #212529;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background-color: var(--primary);
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: var(--light);
+            padding: 180px 0 100px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--dark);
+            line-height: 1.2;
+        }
+
+        .hero-title span {
+            color: var(--primary);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: var(--gray);
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* About Section */
+        .about {
+            background-color: white;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--gray);
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .experience-item {
+            margin-bottom: 15px;
+        }
+
+        .experience-title {
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        .experience-company {
+            color: var(--primary);
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            background-color: var(--light);
+        }
+
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            gap: 10px;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            border-radius: 30px;
+            border: 1px solid var(--gray);
+            background-color: transparent;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background-color: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .portfolio-img {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .portfolio-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover .portfolio-img img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-content {
+            padding: 20px;
+        }
+
+        .portfolio-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-category {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+
+        .portfolio-desc {
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            color: var(--gray);
+        }
+
+        .portfolio-tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+        }
+
+        .tool-tag {
+            padding: 5px 10px;
+            background-color: #f1f3f5;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .view-project {
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .view-project i {
+            margin-left: 5px;
+            transition: var(--transition);
+        }
+
+        .view-project:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Case Studies Section */
+        .case-studies {
+            background-color: white;
+        }
+
+        .case-study {
+            margin-bottom: 80px;
+        }
+
+        .case-study:last-child {
+            margin-bottom: 0;
+        }
+
+        .case-study-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .case-study-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .case-study-subtitle {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        .case-study-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .case-study-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .case-study-text {
+            flex: 1;
+        }
+
+        .case-study-section {
+            margin-bottom: 25px;
+        }
+
+        .section-heading {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-heading i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+
+        .section-text {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        .results-list {
+            list-style: none;
+        }
+
+        .results-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+        }
+
+        .results-list li::before {
+            content: '✓';
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: white;
+        }
+
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-desc {
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .contact-text h4 {
+            margin-bottom: 5px;
+        }
+
+        .contact-text p {
+            color: var(--gray);
+        }
+
+        .contact-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #f1f3f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .contact-form {
+            flex: 1;
+            padding: 30px;
+            background-color: var(--light);
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-btn {
+            width: 100%;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 80px 0 20px;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-col {
+            flex: 1;
+            min-width: 240px;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .footer-text {
+            color: #adb5bd;
+            margin-bottom: 20px;
+        }
+
+        .footer-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #adb5bd;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #343a40;
+            color: #adb5bd;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .container {
+                max-width: 960px;
+            }
+
+            .about-content,
+            .contact-container,
+            .case-study-content {
+                flex-direction: column;
+            }
+
+            .about-img,
+            .about-text,
+            .contact-info,
+            .contact-form,
+            .case-study-img,
+            .case-study-text {
+                width: 100%;
+            }
+
+            .about-img {
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                max-width: 720px;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 40px;
+                transition: var(--transition);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+
+            .hero-title {
+                font-size: 2.8rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                max-width: 540px;
+            }
+
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Ayan<span>.</span></a>
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#casestudies">Case Studies</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Creative <span>Graphic Designer</span> & Web Developer</h1>
+                <p class="hero-subtitle">With 1.5 years experience creating impactful visual solutions</p>
+                <div class="hero-btns">
+                    <a href="#portfolio" class="btn">View My Work</a>
+                    <a href="#contact" class="btn btn-outline">Contact Me</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="./images/Brand Identity.jpeg" alt="Ayan - Graphic Designer">
+                </div>
+                <div class="about-text">
+                    <h3>I create visual solutions for brands and businesses</h3>
+                    <p>I'm a passionate graphic designer and web developer with 1.5 years of experience working at a software house. My journey in design and development has equipped me with a diverse skill set that allows me to create impactful visual solutions across various platforms.</p>
+                    <p>I acquired my skills through HBS services social media platform and have been applying them professionally to help businesses communicate effectively with their audiences. Now I'm pursuing freelancing opportunities while delivering exceptional creative work to clients worldwide.</p>
+                    
+                    <div class="experience">
+                        <div class="experience-item">
+                            <div class="experience-title">
+                                <span>Graphic Designer & Web Developer</span>
+                                <span class="experience-company">Software House</span>
+                            </div>
+                            <p>2023 - Present (1.5 years)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <h2 class="section-title">My Portfolio</h2>
+            
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="branding">Branding</button>
+                <button class="filter-btn" data-filter="print">Print Design</button>
+                <button class="filter-btn" data-filter="social">Social Media</button>
+                <button class="filter-btn" data-filter="product">Product Design</button>
+                <button class="filter-btn" data-filter="web">Web/UI Design</button>
+            </div>
+            
+            <div class="portfolio-grid">
+                <!-- Branding Projects -->
+                <div class="portfolio-item" data-category="branding" id="logo-design">
+                    <div class="portfolio-img">
+                        <img src="./images/Logo designs.jpeg" alt="Logo Design Collection">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Modern Logo Collection</h3>
+                        <p class="portfolio-category">Branding / Logo Design</p>
+                        <p class="portfolio-desc">A collection of minimalist logos designed for various brands, focusing on clean lines and memorable visual identity.</p>
+                        <div class="portfolio-tools">
+                            <span class="tool-tag">Adobe Illustrator</span>
+                            <span class="tool-tag">Logo Design</span>
+                            <span class="tool-tag">Branding</span>
+                        </div>
+                        <a href="#logo-design" class="view-project">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="branding" id="brand-identity">
+                    <div class="portfolio-img">
+                        <img src="./images/Brand Identity.jpeg" alt="Brand Identity Design">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Tech Company Brand Identity</h3>
+                        <p class="portfolio-category">Branding / Identity Design</p>
+                        <p class="portfolio-desc">Complete brand identity design for a modern tech company including logo, business cards, letterhead, and brand guidelines.</p>
+                        <div class="portfolio-tools">
+                            <span class="tool-tag">Adobe Illustrator</span>
+                            <span class="tool-tag">Adobe InDesign</span>
+                            <span class="tool-tag">Brand Identity</span>
+                        </div>
+                        <a href="#brand-identity" class="view-project">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="branding" id="coffee-brand">
+                    <div class="portfolio-img">
+                        <img src="./images/Brew haven Brand identity.jpeg" alt="Brew Haven Brand Identity">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Brew Haven Coffee Brand</h3>
+                        <p class="portfolio-category">Branding / Identity Design</p>
+                        <p class="portfolio-desc">Complete brand identity for Brew Haven coffee company, including logo, packaging, and brand materials.</p>
+                        <div class="portfolio-tools">
+                            <span class="tool-tag">Adobe Illustrator</span>
+                            <span class="tool-tag">Adobe Photoshop</span>
+                            <span class="tool-tag">Brand Identity</span>
+                        </div>
+                        <a href="#coffee-brand" class="view-project">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Print Design Projects -->
+                <div class="portfolio-item" data-category="print" id="print-design">
+                    <div class="portfolio-img">
+                        <img src="./images/Music festival print designs.jpeg" alt="Print Design Collection">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Music Festival Print Materials</h3>
+                        <p class="portfolio-category">Print Design</p>
+                        <p class="portfolio-desc">Vibrant print designs for a music festival including flyers, brochures, and poster designs with modern typography.</p>
+                        <div class="portfolio-tools">
+                            <span class="tool-tag">Adobe InDesign</span>
+                            <span class="tool-tag">Adobe Photoshop</span>
+                            <span class="tool-tag">Print Design</span>
+                        </div>
+                        <a href="#print-design" class="view-project">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Social Media Projects -->
+                <div class="portfolio-item" data-category="social" id="social-media">
+                    <div class="portfolio-img">
+                        <img src="./images/Social Media Posts.jpeg" alt="Social Media Design">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Fitness Brand Social Media</h3>
+                        <p class="portfolio-category">Social Media Design</p>
+                        <p class="portfolio-desc">Comprehensive social media design package for a fitness brand with consistent visuals across Instagram, Facebook, and YouTube.</p>
+                        <div class="portfolio-tools">
+                            <span class="tool-tag">Adobe Photoshop</span>
+                            <span class="tool-tag">Social Media</span>
+                            <span class="tool-tag">Content Design</span>
+                        </div>
+                        <a href="#social-media" class="view-project">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Product Design Projects -->
+                <div class="portfolio-item" data-category="product" id="merchandise">
+                    <div class="portfolio-img">
+                        <img src="./images/T-shirt designs.jpeg" alt="Product Design">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Lifestyle Brand Merchandise</h3>
+                        <p class="portfolio-category">Product Design</p>
+                        <p class="portfolio-desc">Modern merchandise designs for a lifestyle brand including t-shirts, mugs, and tote bags with contemporary graphics.</p>
+                        <div class="portfolio-tools">
+                            <span class="tool-tag">Adobe Illustrator</span>
+                            <span class="tool-tag">Mockup Design</span>
+                            <span class="tool-tag">Product Design</span>
+                        </div>
+                        <a href="#merchandise" class="view-project">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="product" id="packaging">
+                    <div class="portfolio-img">
+                        <img src="./images/Packaging design.jpeg" alt="Packaging Design">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Elegant Packaging Collection</h3>
+                        <p class="portfolio-category">Product Packaging</p>
+                        <p class="portfolio-desc">Clean, elegant packaging designs for cosmetic and consumer products with attention to detail and brand consistency.</p>
+                        <div class="portfolio-tools">
+                            <span class="tool-tag">Adobe Illustrator</span>
+                            <span class="tool-tag">Adobe Photoshop</span>
+                            <span class="tool-tag">Packaging Design</span>
+                        </div>
+                        <a href="#packaging" class="view-project">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Web/UI Design Projects -->
+                <div class="portfolio-item" data-category="web" id="web-design">
+                    <div class="portfolio-img">
+                        <img src="./images/Website designs.jpeg" alt="UI/UX Design">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Modern UI/UX Collection</h3>
+                        <p class="portfolio-category">UI/UX Design</p>
+                        <p class="portfolio-desc">Clean, modern UI/UX designs for websites, mobile applications, and admin dashboards with a focus on user experience.</p>
+                        <div class="portfolio-tools">
+                            <span class="tool-tag">Figma</span>
+                            <span class="tool-tag">Adobe XD</span>
+                            <span class="tool-tag">UI/UX Design</span>
+                        </div>
+                        <a href="#web-design" class="view-project">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Additional Projects -->
+                <div class="portfolio-item" data-category="print" id="infographic">
+                    <div class="portfolio-img">
+                        <img src="./images/Infographics designs.jpeg" alt="Infographic Design">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Data Visualization & Infographics</h3>
+                        <p class="portfolio-category">Information Design</p>
+                        <p class="portfolio-desc">Creative data visualization and infographic designs that make complex information accessible and visually engaging.</p>
+                        <div class="portfolio-tools">
+                            <span class="tool-tag">Adobe Illustrator</span>
+                            <span class="tool-tag">Data Visualization</span>
+                            <span class="tool-tag">Information Design</span>
+                        </div>
+                        <a href="#infographic" class="view-project">View Project <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item" data-category="print" id="event-design">
+                    <div class="portfolio-img">
+                        <img src="./images/Event designs.jpeg" alt="Event Design">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Event Promotion Materials</h3>
+                        <p class="portfolio-category">Print & Digital Design</p>
